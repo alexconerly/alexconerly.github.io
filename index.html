@@ -1,652 +1,1218 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Alex Conerly | Portfolio</title>
+    <meta
+        name="description"
+        content="Portfolio of Alex Conerly, senior data analyst and developer specializing in Python, advanced SQL, analytics automation, and business reporting."
+    >
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <title>Alex Conerly | Senior Data Analyst</title>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <style>
+        :root {
+            --navy: #0b4f8a;
+            --navy-dark: #07385f;
+            --blue-light: #eaf3fb;
+            --ink: #1e2a35;
+            --muted: #65717c;
+            --line: #dce4eb;
+            --soft: #f7f9fb;
+            --white: #ffffff;
+            --shadow: 0 8px 28px rgba(24, 49, 72, 0.08);
+        }
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet" />
+        * {
+            box-sizing: border-box;
+        }
 
-    <!-- Custom styles for this template -->
-    <link href="assets/css/styles.css" rel="stylesheet" />
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding-top: 70px;
+            color: var(--ink);
+            background: var(--white);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--navy);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--navy-dark);
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .site-nav {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 1000;
+            min-height: 70px;
+            color: var(--white);
+            background: var(--navy-dark);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.16);
+        }
+
+        .nav-inner {
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .brand {
+            color: var(--white);
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        .brand:hover {
+            color: var(--white);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .menu-button {
+            display: none;
+            padding: 7px 10px;
+            color: var(--white);
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .hero {
+            min-height: 590px;
+            display: flex;
+            align-items: center;
+            padding: 90px 0 80px;
+            color: var(--white);
+            text-align: center;
+            background:
+                radial-gradient(
+                    circle at 80% 10%,
+                    rgba(255, 255, 255, 0.16),
+                    transparent 35%
+                ),
+                linear-gradient(135deg, #07385f, #0b4f8a);
+        }
+
+        .hero-kicker {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 7px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.38);
+            border-radius: 999px;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            margin: 0 0 8px;
+            font-size: clamp(3rem, 8vw, 5.4rem);
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        .hero h2 {
+            max-width: 850px;
+            margin: 0 auto 22px;
+            font-size: clamp(1.25rem, 3vw, 2rem);
+            font-weight: 400;
+        }
+
+        .hero-copy {
+            max-width: 820px;
+            margin: 0 auto 28px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.08rem;
+        }
+
+        .button-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 11px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 145px;
+            padding: 11px 16px;
+            border-radius: 5px;
+            font-weight: 700;
+            transition: 0.15s ease;
+        }
+
+        .button-light {
+            color: var(--navy-dark);
+            background: var(--white);
+            border: 1px solid var(--white);
+        }
+
+        .button-light:hover {
+            color: var(--navy-dark);
+            background: #eef4f8;
+        }
+
+        .button-outline {
+            color: var(--white);
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.75);
+        }
+
+        .button-outline:hover {
+            color: var(--navy-dark);
+            background: var(--white);
+        }
+
+        section {
+            padding: 86px 0;
+        }
+
+        .soft {
+            background: var(--soft);
+        }
+
+        .blue-soft {
+            background: var(--blue-light);
+        }
+
+        .section-heading {
+            margin: 0;
+            color: var(--navy-dark);
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .heading-rule {
+            width: 70px;
+            height: 4px;
+            margin: 15px auto 22px;
+            background: var(--navy);
+            border: 0;
+        }
+
+        .section-intro {
+            max-width: 800px;
+            margin: 0 auto 45px;
+            color: var(--muted);
+            text-align: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            box-shadow: var(--shadow);
+        }
+
+        .impact-card {
+            padding: 31px 25px;
+            text-align: center;
+        }
+
+        .icon-circle {
+            width: 58px;
+            height: 58px;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 18px;
+            color: var(--white);
+            background: var(--navy);
+            border-radius: 50%;
+            font-size: 1.45rem;
+            font-weight: 700;
+        }
+
+        .impact-card h3,
+        .project-card h3,
+        .skill-panel h3 {
+            margin: 0 0 10px;
+            color: var(--navy-dark);
+            font-size: 1.2rem;
+        }
+
+        .impact-card p,
+        .project-card p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .project-banner {
+            min-height: 120px;
+            display: grid;
+            place-items: center;
+            color: var(--white);
+            background: linear-gradient(
+                135deg,
+                var(--navy-dark),
+                var(--navy)
+            );
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .project-body {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            padding: 24px;
+        }
+
+        .label {
+            align-self: flex-start;
+            margin-bottom: 12px;
+            padding: 4px 9px;
+            color: var(--navy-dark);
+            background: var(--blue-light);
+            border-radius: 999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .project-meta {
+            margin-bottom: 12px;
+            color: var(--navy);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .project-link {
+            align-self: flex-start;
+            margin-top: auto;
+            padding: 9px 13px;
+            color: var(--white);
+            background: var(--navy);
+            border-radius: 5px;
+            font-size: 0.87rem;
+            font-weight: 700;
+        }
+
+        .project-link:hover {
+            color: var(--white);
+            background: var(--navy-dark);
+        }
+
+        .other-projects {
+            margin-top: 34px;
+            padding: 30px;
+        }
+
+        .other-projects h3 {
+            margin: 0 0 20px;
+            color: var(--navy-dark);
+        }
+
+        .other-project-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0 34px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .other-project-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .other-project-list a {
+            font-weight: 700;
+        }
+
+        .other-project-list small {
+            display: block;
+            color: var(--muted);
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .top-space {
+            margin-top: 25px;
+        }
+
+        .outline-dark {
+            display: inline-block;
+            padding: 10px 15px;
+            color: var(--navy);
+            border: 1px solid var(--navy);
+            border-radius: 5px;
+            font-weight: 700;
+        }
+
+        .outline-dark:hover {
+            color: var(--white);
+            background: var(--navy);
+        }
+
+        .skill-panel {
+            padding: 30px;
+        }
+
+        .chip {
+            display: inline-block;
+            margin: 4px 2px;
+            padding: 6px 11px;
+            color: var(--navy-dark);
+            background: var(--blue-light);
+            border: 1px solid #d4e6f5;
+            border-radius: 999px;
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .education-list {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            border-top: 1px solid var(--line);
+        }
+
+        .education-item {
+            display: grid;
+            grid-template-columns: 72px 1fr auto;
+            align-items: center;
+            gap: 14px;
+            min-height: 72px;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .education-logo-wrap {
+            display: grid;
+            place-items: center;
+        }
+
+        .education-logo {
+            max-width: 54px;
+            max-height: 47px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .education-logo.wide {
+            max-width: 64px;
+        }
+
+        .education-school {
+            color: var(--navy-dark);
+            font-weight: 700;
+        }
+
+        .education-program {
+            margin: 1px 0 0;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .education-year {
+            color: var(--navy);
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .contact {
+            color: var(--white);
+            background: var(--navy-dark);
+            text-align: center;
+        }
+
+        .contact .section-heading {
+            color: var(--white);
+        }
+
+        .contact .section-intro {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact a {
+            color: var(--white);
+        }
+
+        .social-row {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .social {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.55);
+            border-radius: 50%;
+            font-weight: 700;
+        }
+
+        .social:hover {
+            color: var(--navy-dark);
+            background: var(--white);
+        }
+
+        footer {
+            padding: 17px 0;
+            color: rgba(255, 255, 255, 0.75);
+            background: #052a48;
+            text-align: center;
+            font-size: 0.86rem;
+        }
+
+        @media (max-width: 850px) {
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .other-project-list {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-button {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                display: none;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                padding: 12px 20px 18px;
+                background: var(--navy-dark);
+                border-top: 1px solid rgba(255, 255, 255, 0.15);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                width: 100%;
+                padding: 10px 0;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding-top: 62px;
+            }
+
+            .site-nav,
+            .nav-inner {
+                min-height: 62px;
+            }
+
+            .nav-links {
+                top: 62px;
+            }
+
+            .container {
+                width: min(100% - 28px, 1120px);
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 70px 0 60px;
+            }
+
+            section {
+                padding: 64px 0;
+            }
+
+            .education-item {
+                grid-template-columns: 54px 1fr;
+                gap: 10px;
+                padding: 12px 4px;
+            }
+
+            .education-year {
+                grid-column: 2;
+                margin-top: -7px;
+            }
+
+            .education-logo {
+                max-width: 43px;
+                max-height: 40px;
+            }
+        }
+    </style>
 </head>
 
 <body id="page-top">
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-dark fixed-top text-uppercase" id="mainNav">
-        <div class="container">
-            <button class="navbar-toggler navbar-toggler-right text-uppercase text-white rounded" type="button"
-                data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
+
+    <nav class="site-nav">
+        <div class="container nav-inner">
+            <a class="brand" href="#page-top">Alex Conerly</a>
+
+            <button
+                class="menu-button"
+                id="menu-button"
+                type="button"
+                aria-expanded="false"
+                aria-controls="nav-links"
+                aria-label="Open navigation"
+            >
+                ☰
             </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link " href="#portfolio">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#education">Education</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#connect">Connect</a>
-                    </li>
-                </ul>
+
+            <div class="nav-links" id="nav-links">
+                <a href="#impact">Impact</a>
+                <a href="#projects">Public Work</a>
+                <a href="#skills">Skills</a>
+                <a href="#education">Education</a>
+                <a href="#connect">Connect</a>
             </div>
         </div>
     </nav>
 
-    <!-- Header -->
-    <header class="masthead bg-primary text-white text-center">
+    <header class="hero">
         <div class="container">
-            <img class="img-fluid mb-5 d-block mx-auto rounded-circle" style="height: 400px;"
-                src="assets/img/pub_domain_image_earth.jpg" alt="" />
-            <h1 class="mb-0">Alex Conerly</h1>
-            <hr />
-            <h2 class="mb-0">
-                Data Analysis - Statistics Visualizations - Python Enthusiast
+            <span class="hero-kicker">
+                Analytics · Data Pipelines · Automation
+            </span>
 
+            <h1>Alex Conerly</h1>
+
+            <h2>
+                Senior Data Analyst | Analytics Engineering &amp; Automation
             </h2>
 
-            <!-- Replace this text with your brand statement or other short text about you. -->
-            <p class="brand-statement">
-                Welcome to my site! I'm a highly motivated data analyst and developer with a passion
-                for helping businesses find insights with cutting-edge tools. I use programming languages
-                and technologies such as Python, SQL, Excel, JavaScript, R, Tableau, machine learning and more
-                to solve real-world problems. Feel free to click on some of my projects in the
-                images of the portfolio section below.
+            <p class="hero-copy">
+                I am a senior data analyst and developer with more than five
+                years of experience building analytics, data pipelines,
+                reporting, and automation with Python and advanced SQL. In my
+                current role, I translate complex operational data and detailed
+                business rules into reliable systems that support inventory,
+                profitability, compensation, customer strategy, and day-to-day
+                decisions.
             </p>
+
+            <div class="button-row">
+                <a
+                    class="button button-light"
+                    href="resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    View Resume
+                </a>
+
+                <a
+                    class="button button-outline"
+                    href="https://www.linkedin.com/in/alexconerly"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    LinkedIn
+                </a>
+
+                <a
+                    class="button button-outline"
+                    href="https://github.com/alexconerly"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    GitHub
+                </a>
+            </div>
         </div>
     </header>
 
-    <!-- Portfolio Grid Section -->
-    <section class="portfolio" id="portfolio">
+    <section id="impact">
         <div class="container">
-            <h2 class="text-center text-uppercase text-secondary mb-0">
-                Portfolio
-            </h2>
+            <h2 class="section-heading">Professional Impact</h2>
+            <hr class="heading-rule">
 
-            <p>&nbsp;</p>
+            <p class="section-intro">
+                My current professional work is proprietary, so the systems
+                themselves cannot be shared publicly. These examples summarize
+                the kinds of business problems I solve.
+            </p>
 
+            <div class="grid-3">
+                <article class="card impact-card">
+                    <div class="icon-circle">A</div>
 
-            <h6 class="text-center text-uppercase text-secondary mb-0">
-                (click images to see projects)
-            </h6>
-            <hr class="star-dark mb-4" />
+                    <h3>Enterprise Analytics</h3>
 
-            <!-- Each project should include a header and a picture or animated gif.-->
-            <div class="row">
-                <div class="col-md-6 col-lg-4">
-                    <a class="portfolio-item d-block mx-auto" data-toggle="modal" data-target="#portfolio-modal-1">
-                        <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                                <p>Cryptocurrency Analysis with Unsupervised Machine Learning</p>
-                                <i class="fas fa-search-plus fa-2x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="assets/img/portfolio/cryptocurrency_laptop_pub_image.jpeg" alt="" />
-                    </a>
+                    <p>
+                        Build and maintain production analytics, data pipelines,
+                        and decision-support systems used by leaders and teams
+                        across more than 200 locations in my current role.
+                    </p>
+                </article>
+
+                <article class="card impact-card">
+                    <div class="icon-circle">I</div>
+
+                    <h3>Inventory Optimization</h3>
+
+                    <p>
+                        Develop complex systems that evaluate demand,
+                        availability, sales velocity, geography, and business
+                        constraints to coordinate inventory movement nationwide.
+                    </p>
+                </article>
+
+                <article class="card impact-card">
+                    <div class="icon-circle">⚙</div>
+
+                    <h3>Analytics Infrastructure</h3>
+
+                    <p>
+                        Create reusable Python frameworks that standardize
+                        business logic and deliver tailored reporting and
+                        decision tools across varied operational needs.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="blue-soft" id="skills">
+        <div class="container">
+            <h2 class="section-heading">Tools &amp; Capabilities</h2>
+            <hr class="heading-rule">
+
+            <p class="section-intro">
+                My day-to-day work centers on Python, advanced SQL, pandas,
+                data pipelines, analytics automation, validation, and
+                programmatic reporting. Earlier public projects broadened my
+                experience with additional tools and methods.
+            </p>
+
+            <div class="grid-2">
+                <div class="card skill-panel">
+                    <h3>Core Expertise</h3>
+
+                    <span class="chip">Python</span>
+                    <span class="chip">Advanced SQL</span>
+                    <span class="chip">pandas</span>
+                    <span class="chip">ETL &amp; Data Pipelines</span>
+                    <span class="chip">Data Modeling &amp; Validation</span>
+                    <span class="chip">Excel/PDF Automation</span>
+                    <span class="chip">Analytics Engineering</span>
+                    <span class="chip">
+                        Inventory &amp; Profitability Analytics
+                    </span>
+                    <span class="chip">
+                        Business Intelligence &amp; Reporting
+                    </span>
+                    <span class="chip">Generative AI Tools</span>
+                    <span class="chip">
+                        Git &amp; Production Deployment
+                    </span>
+                    <span class="chip">
+                        Relational / NoSQL Databases
+                    </span>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <a class="portfolio-item d-block mx-auto" data-toggle="modal" data-target="#portfolio-modal-2">
-                        <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                                <p>Interactive Earthquake Map using Leaflet/Javascript</p>
-                                <i class="fas fa-search-plus fa-2x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="assets/img/portfolio/equake_7_by_5_map.png" alt="" />
-                    </a>
+
+                <div class="card skill-panel">
+                    <h3>Additional Project Experience</h3>
+
+                    <span class="chip">Machine Learning</span>
+                    <span class="chip">Statistical Analysis</span>
+                    <span class="chip">R</span>
+                    <span class="chip">Tableau</span>
+                    <span class="chip">JavaScript</span>
+                    <span class="chip">Flask</span>
+                    <span class="chip">HTML/CSS</span>
+                    <span class="chip">AWS</span>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <a class="portfolio-item d-block mx-auto" data-toggle="modal" data-target="#portfolio-modal-3">
-                        <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                                <p>MechaCar Analysis with R programming</p>
-                                <i class="fas fa-search-plus fa-2x"></i>
-                            </div>
+            </div>
+
+            <p
+                class="section-intro"
+                style="margin-top: 30px; margin-bottom: 0;"
+            >
+                My background as a professional musician and audio engineer
+                also shaped how I collaborate, communicate, and solve problems
+                creatively.
+            </p>
+        </div>
+    </section>
+
+    <section class="soft" id="projects">
+        <div class="container">
+            <h2 class="section-heading">Selected Public Projects</h2>
+            <hr class="heading-rule">
+
+            <p class="section-intro">
+                These projects were completed during formal analytics training.
+                They demonstrate technical breadth, while my current
+                professional work represents my primary experience.
+            </p>
+
+            <div class="grid-3">
+                <article class="card project-card">
+                    <div class="project-banner">AIRBNB</div>
+
+                    <div class="project-body">
+                        <span class="label">Academic Team Capstone</span>
+
+                        <h3>Nashville Airbnb Price Prediction</h3>
+
+                        <div class="project-meta">
+                            Python · SQL · Flask · Plotly · Machine Learning
                         </div>
-                        <img class="img-fluid" src="assets/img/portfolio/cars_pub_domain.png" alt="" />
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <a class="portfolio-item d-block mx-auto" data-toggle="modal" data-target="#portfolio-modal-4">
-                        <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                                <p>School District Analysis with Python Programming</p>
-                                <i class="fas fa-search-plus fa-3x"></i>
-                            </div>
+
+                        <p>
+                            Compared predictive models and helped deliver
+                            rental-price estimates through a database-backed
+                            Flask application.
+                        </p>
+
+                        <a
+                            class="project-link"
+                            href="https://github.com/alexconerly/Predicting_Airbnb_Prices"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View Project
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card project-card">
+                    <div class="project-banner">STATS</div>
+
+                    <div class="project-body">
+                        <span class="label">Academic Project</span>
+
+                        <h3>MechaCar Statistical Analysis</h3>
+
+                        <div class="project-meta">
+                            R · Regression · Hypothesis Testing
                         </div>
-                        <img class="img-fluid" src="assets/img/portfolio/school_pub_domain_image.png" alt="" />
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <a class="portfolio-item d-block mx-auto" data-toggle="modal" data-target="#portfolio-modal-5">
-                        <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                                <p>Bikesharing Analysis with Tableau</p>
-                                <i class="fas fa-search-plus fa-2x"></i>
-                            </div>
+
+                        <p>
+                            Applied regression, summary statistics, and
+                            hypothesis testing to evaluate factors affecting
+                            vehicle-prototype performance.
+                        </p>
+
+                        <a
+                            class="project-link"
+                            href="https://github.com/alexconerly/MechaCar_Statistical_Analysis"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View Project
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card project-card">
+                    <div class="project-banner">ML</div>
+
+                    <div class="project-body">
+                        <span class="label">Academic Project</span>
+
+                        <h3>Cryptocurrency Clustering</h3>
+
+                        <div class="project-meta">
+                            Python · PCA · Clustering · Unsupervised Learning
                         </div>
-                        <img class="img-fluid" src="assets/img/portfolio/bikes_pub_domain_image.png" alt="" />
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <a class="portfolio-item d-block mx-auto" data-toggle="modal" data-target="#portfolio-modal-6">
-                        <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                                <p>Donation Analysis with Neural Networks and Deep Learning Models</p>
-                                <i class="fas fa-search-plus fa-2x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="assets/img/portfolio/deep-neural-networks_pub_domain.png" alt="" />
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <a class="portfolio-item d-block mx-auto" data-toggle="modal" data-target="#portfolio-modal-7">
-                        <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                                <p>Dynamic Webpage using JavaScript, HTML, & CSS</p>
-                                <i class="fas fa-search-plus fa-2x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="assets/img/portfolio/UFOsite.png" alt="" />
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <a class="portfolio-item d-block mx-auto" data-toggle="modal" data-target="#portfolio-modal-8">
-                        <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                                <p>Analysis of Employee Databases using PostgreSQL</p>
-                                <i class="fas fa-search-plus fa-2x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="assets/img/portfolio/postgresql_elephant_pub_domain.png" alt="" />
-                    </a>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <a class="portfolio-item d-block mx-auto" data-toggle="modal" data-target="#portfolio-modal-9">
-                        <div class="portfolio-item-caption d-flex position-absolute h-100 w-100">
-                            <div class="portfolio-item-caption-content my-auto w-100 text-center text-white">
-                                <p>Mission to Mars - Webscraping with Flask, Splinter, BeautifulSoup</p>
-                                <i class="fas fa-search-plus fa-2x"></i>
-                            </div>
-                        </div>
-                        <img class="img-fluid" src="assets/img/portfolio/rover.png" alt="" />
+
+                        <p>
+                            Prepared cryptocurrency data and used dimensionality
+                            reduction and clustering to identify groups with
+                            similar characteristics.
+                        </p>
+
+                        <a
+                            class="project-link"
+                            href="https://github.com/alexconerly/Cryptocurrencies"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View Project
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="card other-projects">
+                <h3>Other Public Projects</h3>
+
+                <ul class="other-project-list">
+                    <li>
+                        <a
+                            href="https://github.com/alexconerly/Mapping_Earthquakes"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Interactive Earthquake Map
+                        </a>
+
+                        <small>
+                            JavaScript, Leaflet, D3, and GeoJSON
+                        </small>
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://github.com/alexconerly/School_District_Analysis"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            School District Analysis
+                        </a>
+
+                        <small>Python and pandas</small>
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://github.com/alexconerly/Pewlett-Hackard-Analysis"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Employee Database Analysis
+                        </a>
+
+                        <small>
+                            SQL and relational data modeling
+                        </small>
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://github.com/alexconerly/bikesharing"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Citi Bike Analysis
+                        </a>
+
+                        <small>
+                            Tableau dashboards and data storytelling
+                        </small>
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://github.com/alexconerly/Neural_Network_Charity_Analysis"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Charity Analysis
+                        </a>
+
+                        <small>
+                            Neural networks and model evaluation
+                        </small>
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://github.com/alexconerly/Mission-to-Mars"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Mission to Mars
+                        </a>
+
+                        <small>
+                            Web scraping, Flask, and MongoDB
+                        </small>
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://github.com/alexconerly/UFOs"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            UFO Data Website
+                        </a>
+
+                        <small>
+                            JavaScript, HTML, and CSS
+                        </small>
+                    </li>
+                </ul>
+
+                <div class="center top-space">
+                    <a
+                        class="outline-dark"
+                        href="https://github.com/alexconerly"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View All GitHub Repositories
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="bg-primary text-white mb-0" id="about">
+    <section id="education">
         <div class="container">
-            <h2 class="text-center text-uppercase text-white">About Me</h2>
-            <hr class="star-light mb-5" />
+            <h2 class="section-heading">Education &amp; Training</h2>
+            <hr class="heading-rule">
 
-            <p class="about-me text-center">
-                With quintillions of bytes of data generated each day in the world, the challenge of making sense of it
-                all can seem astronomical. I'm here to bring it down to earth for you.
+            <p class="section-intro">
+                Business education, formal analytics training, and an earlier
+                professional foundation in music and audio production.
             </p>
-        </div>
-        <div class="container">
-            <div class="col-md-10 offset-md-1">
-                <div class="row text-center skills-row">
 
-                    <!-- Replace these icons and text with skills you want to show case -->
-                    <!-- You should ideally not include any more than 5-6 tech skills -->
-                    <div class="col">
-                        <i class="fab fa-html5 fa-3x"></i>
+            <div class="education-list">
+                <div class="education-item">
+                    <div class="education-logo-wrap">
+                        <img
+                            class="education-logo"
+                            src="images/vanderbilt_logo.png"
+                            alt="Vanderbilt University logo"
+                        >
                     </div>
-                    <div class="col">
-                        <i class="fab fa-python f fa-3x"></i>
+
+                    <div>
+                        <div class="education-school">
+                            Vanderbilt University
+                        </div>
+
+                        <p class="education-program">
+                            Data Analytics Boot Camp Certificate
+                        </p>
                     </div>
-                    <div class="col">
-                        <i class="fab fa-js-square fa-3x"></i>
+
+                    <div class="education-year">2021</div>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-logo-wrap">
+                        <img
+                            class="education-logo"
+                            src="images/nashville_software_school_logo.png"
+                            alt="Nashville Software School logo"
+                        >
                     </div>
-                    <div class="col">
-                        <i class="fab fa-css3-alt fa-3x"></i>
+
+                    <div>
+                        <div class="education-school">
+                            Nashville Software School
+                        </div>
+
+                        <p class="education-program">
+                            Data Analytics Jumpstart Certificate
+                        </p>
                     </div>
-                    <div class=" col">
-                        <i class="fab fa-git fa-3x"></i>
+
+                    <div class="education-year">2020</div>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-logo-wrap">
+                        <img
+                            class="education-logo"
+                            src="images/university_of_mississippi_logo.png"
+                            alt="University of Mississippi logo"
+                        >
                     </div>
+
+                    <div>
+                        <div class="education-school">
+                            University of Mississippi
+                        </div>
+
+                        <p class="education-program">
+                            Bachelor of Business Administration
+                        </p>
+                    </div>
+
+                    <div class="education-year">2008</div>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-logo-wrap">
+                        <img
+                            class="education-logo wide"
+                            src="images/pro_media_logo.png"
+                            alt="ProMedia logo"
+                        >
+                    </div>
+
+                    <div>
+                        <div class="education-school">ProMedia</div>
+
+                        <p class="education-program">
+                            Certified Pro Tools Operator of Music
+                        </p>
+                    </div>
+
+                    <div class="education-year">2010</div>
+                </div>
+
+                <div class="education-item">
+                    <div class="education-logo-wrap">
+                        <img
+                            class="education-logo"
+                            src="images/the_recording_workshop_logo.png"
+                            alt="The Recording Workshop logo"
+                        >
+                    </div>
+
+                    <div>
+                        <div class="education-school">
+                            The Recording Workshop
+                        </div>
+
+                        <p class="education-program">
+                            Recording Engineering &amp; Production Certificate
+                            Programs
+                        </p>
+                    </div>
+
+                    <div class="education-year">2006</div>
                 </div>
             </div>
-            <div class="text-center mt-4">
-                <a class="btn btn-lg btn-outline-light"
-                    href="https://github.com/alexconerly/portfolio/raw/main/Alex_Conerly_Resume_with_3_project_examples_2021_new.pdf">
-                    <i class="fas fa-download mr-2"></i>
-                    Resume
+        </div>
+    </section>
+
+    <section class="contact" id="connect">
+        <div class="container">
+            <h2 class="section-heading">Connect</h2>
+            <hr class="heading-rule">
+
+            <p class="section-intro">
+                Contact me about senior data analysis, analytics engineering,
+                automation, or reporting opportunities.
+            </p>
+
+            <p>
+                <a href="mailto:alexanderconerly@gmail.com">
+                    alexanderconerly@gmail.com
+                </a>
+            </p>
+
+            <div class="social-row">
+                <a
+                    class="social"
+                    href="https://www.linkedin.com/in/alexconerly"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                >
+                    in
+                </a>
+
+                <a
+                    class="social"
+                    href="https://github.com/alexconerly"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                >
+                    GH
+                </a>
+
+                <a
+                    class="social"
+                    href="mailto:alexanderconerly@gmail.com"
+                    aria-label="Email"
+                >
+                    @
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Education -->
-    <section class="education" id="education">
-        <div class="container">
-            <h2 class="text-center text-uppercase text-secondary mb-0">
-                Education
-            </h2>
-            <hr class="star-dark mb-5" />
-            <div class="credential">
-                <h2 class="location mb-0">
-                    Vanderbilt University |
-                    <span class="credential-date text-muted">March 2021</span>
-                </h2>
-                <p class="lead">Data Analytics Bootcamp Certificate</p>
-                <p class="credential-description">
-                    Through hands-on learning, the Vanderbilt University Coding
-                    Boot Camp taught me specialized skills with in-demand technologies for
-                    providing insights for business-critical decisions including Python,
-                    Statistics, SQL, JavaScript, Excel, HTML/CSS, Tableau, and Machine Learning.
-                </p>
-            </div>
-            <hr class="credential-divider" />
-            <div class="credential">
-                <h2 class="location mb-0">
-                    Nashville Software School |
-                    <span class="credential-date text-muted">Aug 2020</span>
-                </h2>
-                <p class="lead">Data Analytics Jumpstart Certificate</p>
-                <p class="credential-description">
-                    Through the Data Analytics Jumpstart program at NSS, I gained
-                    invaluable experience with a special focus on python programming,
-                    data visualization, and exploratory data analysis
-                </p>
-            </div>
-            <hr class="credential-divider" />
-            <div class="credential">
-                <h2 class="location mb-0">
-                    University of Mississippi |
-                    <span class="credential-date text-muted">May 2008</span>
-                </h2>
-                <p class="lead">Bachelor of Business Administration</p>
-                <p class="credential-description">
-
-                </p>
-            </div>
-            <hr class="credential-divider" />
-            <div class="credential">
-                <h2 class="location mb-0">
-                    Pro Media |
-                    <span class="credential-date text-muted">2010</span>
-                </h2>
-                <p class="lead">Certified Pro Tools Software Operator of Music</p>
-                <p class="credential-description">
-
-                </p>
-            </div>
-            <hr class="credential-divider" />
-            <div class="credential">
-                <h2 class="location mb-0">
-                    The Recording Workshop |
-                    <span class="credential-date text-muted">2006</span>
-                </h2>
-                <p class="lead">Recording Engineering/Production</p>
-                <p class="credential-description">
-                    Completion of four Certificate Programs (311 hours of training):<br>
-                    - The Recording Engineering and Music Production Program<br>
-                    - The Advanced Recording Engineering and Music Production Program<br>
-                    - The NewTech Audio Production Program<br>
-                    - The Studio Maintenance and Troubleshooting Program<br>
-                </p>
-            </div>
-        </div>
-
-
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer text-center" id="connect">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <h2 class="text-center text-uppercase mb-3">
-                        Connect with Me
-                    </h2>
-                    <p class="text-uppercase mb-4">
-                        alexanderconerly@gmail.com
-                    </p>
-                    <ul class="list-inline mb-0">
-                        <li class="list-inline-item">
-                            <a class="btn-social text-center rounded-circle" href="#">
-                                <i class="fab fa-fw fa-facebook"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="btn-social text-center rounded-circle" href="#">
-                                <i class="fab fa-fw fa-linkedin-in"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="btn-social text-center rounded-circle" href="https://github.com/alexconerly">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <footer>
+        Copyright &copy; Alex Conerly
+        <span id="current-year"></span>
     </footer>
 
-    <div class="copyright py-4 text-center text-white">
-        <div class="container">
-            <small>Copyright &copy; Alex Conerly 2021</small>
-        </div>
-    </div>
+    <script>
+        const menuButton = document.getElementById("menu-button");
+        const navLinks = document.getElementById("nav-links");
 
+        menuButton.addEventListener("click", function () {
+            const open = navLinks.classList.toggle("open");
+            menuButton.setAttribute("aria-expanded", String(open));
+        });
 
+        navLinks.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("open");
+                menuButton.setAttribute("aria-expanded", "false");
+            });
+        });
 
-    <!-- Portfolio Modals: These are what open up when you click on each project. Replace the information as needed. -->
-    <!-- Portfolio Modal 1 -->
-    <div class="modal portfolio-modal mfp-hide" id="portfolio-modal-1">
-        <div class="portfolio-modal-dialog bg-white">
-            <a class="close-button portfolio-modal-dismiss" href="#" data-dismiss="modal">
-                <i class="fa fa-2x fa-times close-link"></i>
-            </a>
-            <div class="container text-center">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <h2 class="text-secondary text-uppercase mb-0">
-                            Cryptocurrency Analysis using Unsupervised Machine Learning
-                        </h2>
-                        <hr class="star-dark mb-5" />
-                        <img class="img-fluid mb-5" src="assets/img/portfolio/3D_image_close.png" alt="" />
-                        <p class="mb-5">
-                            Here is an analysis using unsupervised machine learning
-                            algorithms to assist a hypothetical investment bank in grouping a dataset of
-                            cryptocurrencies by similar features. By clustering the data into groups,
-                            this equips the investment bank to investigate whether each grouping represents
-                            differences in investment viability for their customers.
-                            Click the link below to learn more.
-                        </p>
-                        <a class="btn btn-primary portfolio-modal-dismiss"
-                            href="https://github.com/alexconerly/Cryptocurrencies">
-                            View Github Page</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        document.getElementById("current-year").textContent =
+            new Date().getFullYear();
+    </script>
 
-    <!-- Portfolio Modal 2 -->
-    <div class="modal portfolio-modal mfp-hide" id="portfolio-modal-2">
-        <div class="portfolio-modal-dialog bg-white">
-            <a class="close-button portfolio-modal-dismiss" href="#" data-dismiss="modal">
-                <i class="fa fa-2x fa-times close-link"></i>
-            </a>
-            <div class="container text-center">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <h2 class="text-secondary text-uppercase mb-0">
-                            Dynamic Earthquake Map using Javascirpt with Leaflet and D3
-                        </h2>
-                        <hr class="star-dark mb-5" />
-                        <img class="img-fluid mb-5" src="assets/img/portfolio/Earthquake_Map.png" alt="" />
-                        <p class="mb-5">
-                            Here is an interactive map created using JavaScript with Leaflet and D3 libraries,
-                            of global earthquakes and tectonic plates data, retrieved from GeoJSON formatted sources.
-                            The data was plotted onto Mapbox maps through API requests in order provide various
-                            selectable tile layers and overlays to accommodate a few key map styles and data selection
-                            criteria choices for a particular user.
-                            Feel free to visit the live site or github link below to learn more:
-                        </p>
-                        <a class="btn btn-primary portfolio-modal-dismiss"
-                            href="https://portfolio-project-earthquake.herokuapp.com/">
-                            Live Demo
-                        </a>
-
-                        <a class="btn btn-primary portfolio-modal-dismiss"
-                            href="https://github.com/alexconerly/Mapping_Earthquakes">
-                            View Code (Github Page)</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Portfolio Modal 3 -->
-    <div class="modal portfolio-modal mfp-hide" id="portfolio-modal-3">
-        <div class="portfolio-modal-dialog bg-white">
-            <a class="close-button portfolio-modal-dismiss" href="#" data-dismiss="modal">
-                <i class="fa fa-2x fa-times close-link"></i>
-            </a>
-            <div class="container text-center">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <h2 class="text-secondary text-uppercase mb-0">
-                            Analyzing the MechaCar with R Programming
-                        </h2>
-                        <hr class="star-dark mb-5" />
-                        <img class="img-fluid mb-5" src="assets/img/portfolio/cars_pub_domain.png" alt="" />
-                        <p class="mb-5">
-                            Here is a statistics-based analysis I created using R programming language and Rstudio GUI
-                            to aid a hypothetical company called AutosRU in performing statistical tests on their
-                            datasets for a prototype vehicle called "MechaCar". In essense, the prototype was suffering
-                            from production troubles and needed data analytics to help the manufacturing team uncover
-                            insights about what may need improvements. Follow the github link below to see more about
-                            this project!
-                        </p>
-                        </a>
-
-                        <a class="btn btn-primary portfolio-modal-dismiss"
-                            href="https://github.com/alexconerly/MechaCar_Statistical_Analysis">
-                            View Code (Github Page)</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Portfolio Modal 4 -->
-    <div class="modal portfolio-modal mfp-hide" id="portfolio-modal-4">
-        <div class="portfolio-modal-dialog bg-white">
-            <a class="close-button portfolio-modal-dismiss" href="#" data-dismiss="modal">
-                <i class="fa fa-2x fa-times close-link"></i>
-            </a>
-            <div class="container text-center">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <h2 class="text-secondary text-uppercase mb-0">
-                            School District Analysis with Python
-                        </h2>
-                        <hr class="star-dark mb-5" />
-                        <img class="img-fluid mb-5" src="assets/img/portfolio/school_bus_pub_domain.png" alt="" />
-                        <p class="mb-5">
-                            Here is a project demonstrating the use of Python programming language to perform a myriad
-                            of data analytics using the pandas library in a jupyter notebook to investigate trends in
-                            student grades in various school districts. Click the link below to view the full details
-                            of this analysis on the github page to veiw the report and the notebooks!
-                        </p>
-
-                        <a class="btn btn-primary portfolio-modal-dismiss"
-                            href="https://github.com/alexconerly/School_District_Analysis">
-                            View Code (Github Page)</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Portfolio Modal 5 -->
-    <div class="modal portfolio-modal mfp-hide" id="portfolio-modal-5">
-        <div class="portfolio-modal-dialog bg-white">
-            <a class="close-button portfolio-modal-dismiss" href="#" data-dismiss="modal">
-                <i class="fa fa-2x fa-times close-link"></i>
-            </a>
-            <div class="container text-center">
-                <div class="row">
-                    <div class="col-lg-6 mx-auto">
-                        <h2 class="text-secondary text-uppercase mb-0">
-                            CitiBike Analysis with Tableau
-                        </h2>
-                        <hr class="star-dark mb-5" />
-                        <img class="img-fluid mb-4" src="assets/img/portfolio/tableau_graph.png" alt="" />
-                        <p class="mb-5">
-                            Here is an analysis performed using Tableau software to create insightful
-                            visualizations on New York City's "CitiBike" bikesharing data. Tableau software
-                            is a fast, powerful tool for creating stories from data. Follow the
-                            github link to learn more.
-                        </p>
-                        <a class="btn btn-primary portfolio-modal-dismiss"
-                            href="https://github.com/alexconerly/bikesharing">
-                            View Code (Github Page)</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Portfolio Modal 6 -->
-    <div class="modal portfolio-modal mfp-hide" id="portfolio-modal-6">
-        <div class="portfolio-modal-dialog bg-white">
-            <a class="close-button portfolio-modal-dismiss" href="#" data-dismiss="modal">
-                <i class="fa fa-2x fa-times close-link"></i>
-            </a>
-            <div class="container text-center">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <h2 class="text-secondary text-uppercase mb-0">
-                            Deep Learning Neural Network Analysis on predicting Loan Risk
-                        </h2>
-                        <hr class="star-dark mb-5" />
-                        <img class="img-fluid mb-5" src="assets/img/portfolio/deep-learning_pub_dom_image.png" alt="" />
-                        <p class="mb-5">
-                            Here is an analysis I performed using deep learning models for supervised machine learning
-                            using the tensorflow and scikit-learn libraries on retrospective data to predict a target
-                            variable and evaluate the performance of the model. Follow the github link to see more about
-                            this project.
-                        </p>
-                        <a class="btn btn-primary portfolio-modal-dismiss"
-                            href="https://github.com/alexconerly/Neural_Network_Charity_Analysis">
-                            View Github Page</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Portfolio Modal 7 -->
-    <div class="modal portfolio-modal mfp-hide" id="portfolio-modal-7">
-        <div class="portfolio-modal-dialog bg-white">
-            <a class="close-button portfolio-modal-dismiss" href="#" data-dismiss="modal">
-                <i class="fa fa-2x fa-times close-link"></i>
-            </a>
-            <div class="container text-center">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <h2 class="text-secondary text-uppercase mb-0">
-                            Dynamic Webpage Example
-                        </h2>
-                        <hr class="star-dark mb-5" />
-                        <img class="img-fluid mb-5" src="assets/img/portfolio/UFOsite.png"
-                            alt="https://alexconerly.github.io/Mission-to-Mars" />
-                        <p class="mb-5">
-                            Here is a dynamic webpage I created using html, CSS, and JavaScript! Click on "Live Demo"
-                            below to try out the interactive site yourself or click "View Code (Github Page)" for a
-                            detailed analysis.
-                        </p>
-                        <a class="btn btn-primary portfolio-modal-dismiss" href="https://alexconerly.github.io/UFOs">
-                            Live Demo</a>
-                        <a class="btn btn-primary portfolio-modal-dismiss" href="https://github.com/alexconerly/UFOs">
-                            View Code (Github Page)</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Portfolio Modal 8 -->
-    <div class="modal portfolio-modal mfp-hide" id="portfolio-modal-8">
-        <div class="portfolio-modal-dialog bg-white">
-            <a class="close-button portfolio-modal-dismiss" href="#" data-dismiss="modal">
-                <i class="fa fa-2x fa-times close-link"></i>
-            </a>
-            <div class="container text-center">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <h2 class="text-secondary text-uppercase mb-0">
-                            Employee Database Analysis with PostgreSQL
-                        </h2>
-                        <hr class="star-dark mb-5" />
-                        <img class="img-fluid mb-5" src="assets/img/portfolio/postgresql_elephant_pub_domain.png"
-                            alt="" />
-                        <p class="mb-5">
-                            Here is an analysis performed using structured query language to analyze relational
-                            databases containing information about employees in different departments in order to
-                            predict how many employees may retire soon using PostgreSQL software. Follow the link below
-                            for full details on this project.
-                        </p>
-                        <a class="btn btn-primary portfolio-modal-dismiss"
-                            href="https://github.com/alexconerly/Pewlett-Hackard-Analysis">
-                            View Github Page</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Portfolio Modal 9 -->
-    <div class="modal portfolio-modal mfp-hide" id="portfolio-modal-9">
-        <div class="portfolio-modal-dialog bg-white">
-            <a class="close-button portfolio-modal-dismiss" href="#" data-dismiss="modal">
-                <i class="fa fa-2x fa-times close-link"></i>
-            </a>
-            <div class="container text-center">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <h2 class="text-secondary text-uppercase mb-0">
-                            Mission to Mars - Webscraping Project
-                        </h2>
-                        <hr class="star-dark mb-5" />
-                        <img class="img-fluid mb-5" src="assets/img/portfolio/mars_pub_dom_new_image.png" alt="" />
-                        <p class="mb-5">
-                            In this analysis, I scraped full-resolution images of Mars's hemispheres from websites
-                            along with their associated titles, stored the data in a Mongo database, and finally used
-                            flask, a web applicaiton, to display the scraped data. The web application was then altered
-                            within an html template to enhance the mobile-responsiveness and general accomodation of
-                            these images with Bootstrap 3. Click the link below for the github description.
-                        </p>
-                        <a class="btn btn-primary portfolio-modal-dismiss"
-                            href="https://github.com/alexconerly/Mission-to-Mars">
-                            View Github Page</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
-        integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk=" crossorigin="anonymous"></script>
 </body>
-
 </html>
